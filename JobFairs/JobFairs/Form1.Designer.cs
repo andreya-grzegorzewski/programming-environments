@@ -33,6 +33,7 @@
             this.labelAddData = new System.Windows.Forms.Label();
             this.buttonAddVenue = new System.Windows.Forms.Button();
             this.buttonAddJobFair = new System.Windows.Forms.Button();
+            this.buttonAssociateVenueWithJobFair = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWelcome
@@ -49,7 +50,7 @@
             // 
             this.buttonAddPerson.Location = new System.Drawing.Point(70, 160);
             this.buttonAddPerson.Name = "buttonAddPerson";
-            this.buttonAddPerson.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddPerson.Size = new System.Drawing.Size(169, 23);
             this.buttonAddPerson.TabIndex = 1;
             this.buttonAddPerson.Text = "Person";
             this.buttonAddPerson.UseVisualStyleBackColor = true;
@@ -69,7 +70,7 @@
             // 
             this.buttonAddVenue.Location = new System.Drawing.Point(70, 189);
             this.buttonAddVenue.Name = "buttonAddVenue";
-            this.buttonAddVenue.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddVenue.Size = new System.Drawing.Size(169, 23);
             this.buttonAddVenue.TabIndex = 3;
             this.buttonAddVenue.Text = "Venue";
             this.buttonAddVenue.UseVisualStyleBackColor = true;
@@ -79,17 +80,28 @@
             // 
             this.buttonAddJobFair.Location = new System.Drawing.Point(70, 218);
             this.buttonAddJobFair.Name = "buttonAddJobFair";
-            this.buttonAddJobFair.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddJobFair.Size = new System.Drawing.Size(169, 23);
             this.buttonAddJobFair.TabIndex = 4;
             this.buttonAddJobFair.Text = "Job Fair";
             this.buttonAddJobFair.UseVisualStyleBackColor = true;
             this.buttonAddJobFair.Click += new System.EventHandler(this.buttonAddJobFair_Click);
+            // 
+            // buttonAssociateVenueWithJobFair
+            // 
+            this.buttonAssociateVenueWithJobFair.Location = new System.Drawing.Point(70, 247);
+            this.buttonAssociateVenueWithJobFair.Name = "buttonAssociateVenueWithJobFair";
+            this.buttonAssociateVenueWithJobFair.Size = new System.Drawing.Size(169, 23);
+            this.buttonAssociateVenueWithJobFair.TabIndex = 5;
+            this.buttonAssociateVenueWithJobFair.Text = "Associate Venue with Job Fair";
+            this.buttonAssociateVenueWithJobFair.UseVisualStyleBackColor = true;
+            this.buttonAssociateVenueWithJobFair.Click += new System.EventHandler(this.buttonAssociateVenueWithJobFair_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 550);
+            this.Controls.Add(this.buttonAssociateVenueWithJobFair);
             this.Controls.Add(this.buttonAddJobFair);
             this.Controls.Add(this.buttonAddVenue);
             this.Controls.Add(this.labelAddData);
@@ -109,6 +121,7 @@
         private System.Windows.Forms.Label labelAddData;
         private System.Windows.Forms.Button buttonAddVenue;
         private System.Windows.Forms.Button buttonAddJobFair;
+        private System.Windows.Forms.Button buttonAssociateVenueWithJobFair;
     }
 }
 

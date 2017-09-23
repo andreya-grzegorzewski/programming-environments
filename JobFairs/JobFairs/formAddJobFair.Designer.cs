@@ -44,11 +44,11 @@
             this.tbWebsite = new System.Windows.Forms.TextBox();
             this.tbPhone = new System.Windows.Forms.TextBox();
             this.cbContact = new System.Windows.Forms.ComboBox();
-            this.jobFairPeopleDataSet = new JobFairs.JobFairPeopleDataSet();
             this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobFairPeopleDataSet = new JobFairs.JobFairPeopleDataSet();
             this.peopleTableAdapter = new JobFairs.JobFairPeopleDataSetTableAdapters.PeopleTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.jobFairPeopleDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairPeopleDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -182,15 +182,15 @@
             this.cbContact.Size = new System.Drawing.Size(121, 21);
             this.cbContact.TabIndex = 14;
             // 
-            // jobFairPeopleDataSet
-            // 
-            this.jobFairPeopleDataSet.DataSetName = "JobFairPeopleDataSet";
-            this.jobFairPeopleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // peopleBindingSource
             // 
             this.peopleBindingSource.DataMember = "People";
             this.peopleBindingSource.DataSource = this.jobFairPeopleDataSet;
+            // 
+            // jobFairPeopleDataSet
+            // 
+            this.jobFairPeopleDataSet.DataSetName = "JobFairPeopleDataSet";
+            this.jobFairPeopleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // peopleTableAdapter
             // 
@@ -217,10 +217,11 @@
             this.Controls.Add(this.labelDesc);
             this.Controls.Add(this.labelTitle);
             this.Name = "formAddJobFair";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Job Fair";
             this.Load += new System.EventHandler(this.formAddJobFair_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.jobFairPeopleDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairPeopleDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

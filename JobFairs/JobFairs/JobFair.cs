@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace JobFairs
 {
-    class JobFair
+    public class JobFair
     {
         private string title = "";
         private string desc = "";
@@ -15,7 +15,8 @@ namespace JobFairs
         private string endDate = "";
         private string website = "";
         private string phone = "";
-        private int contactID;
+        private int contactID = -1;
+        private int id;
 
         public string Title
         {
@@ -57,6 +58,12 @@ namespace JobFairs
         {
             get { return contactID; }
             set { contactID = value; }
+        }
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public bool Insert()

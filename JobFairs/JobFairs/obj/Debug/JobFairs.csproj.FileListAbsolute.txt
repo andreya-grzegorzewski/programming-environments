@@ -11,3 +11,4 @@ C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs\JobFairs\obj
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs\JobFairs\obj\Debug\JobFairs.pdb
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs\JobFairs\obj\Debug\JobFairs.formAddVenue.resources
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs\JobFairs\obj\Debug\JobFairs.formAddJobFair.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs\JobFairs\obj\Debug\JobFairs.formAddJobFairVenues.resources

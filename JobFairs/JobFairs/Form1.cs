@@ -42,5 +42,11 @@ namespace JobFairs
         {
             return connStr;
         }
+
+        private void buttonAssociateVenueWithJobFair_Click(object sender, EventArgs e)
+        {
+            formAddJobFairVenues form = new formAddJobFairVenues();
+            form.ShowDialog(this);
+        }
     }
 }
