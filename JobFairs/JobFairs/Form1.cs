@@ -20,6 +20,11 @@ namespace JobFairs
         
         static string connStr = @"Data Source=localhost\SQLEXPRESS;Initial Catalog = JobFair; Integrated Security = True";
 
+        public static string getConnStr()
+        {
+            return connStr;
+        }
+
         private void buttonAddPerson_Click(object sender, EventArgs e)
         {
             formAddPerson form = new formAddPerson();
@@ -36,11 +41,6 @@ namespace JobFairs
         {
             formAddJobFair form = new formAddJobFair();
             form.ShowDialog(this);
-        }
-
-        public static string getConnStr()
-        {
-            return connStr;
         }
 
         private void buttonAssociateVenueWithJobFair_Click(object sender, EventArgs e)

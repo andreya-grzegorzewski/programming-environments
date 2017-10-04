@@ -20,11 +20,13 @@ namespace JobFairs
 
         private void buttonAddVenue_Click(object sender, EventArgs e)
         {
+            // Create the Venue object
             Venue v = new Venue();
             v.Name = tbName.Text;
             v.ShortDescription = tbShortDesc.Text;
             v.LongDescription = tbLongDesc.Text;
 
+            // Insert it and let the user know if the insertion worked
             if (v.Insert())
             {
                 MessageBox.Show(this, v.Name + " was added.", "Success!");

@@ -73,7 +73,6 @@ namespace JobFairs
         {
             // TODO: This line of code loads data into the 'jobFairPeopleDataSet.People' table. You can move, or remove it, as needed.
             this.peopleTableAdapter.Fill(this.jobFairPeopleDataSet.People);
-
         }
 
         private void buttonAddJobFair_Click(object sender, EventArgs e)

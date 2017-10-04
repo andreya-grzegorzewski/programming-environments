@@ -40,10 +40,12 @@ namespace JobFairs
 
         public bool Insert()
         {
+            // Connect to the database
             string connStr = Form1.getConnStr();
             SqlConnection sc = new SqlConnection(connStr);
             sc.Open();
 
+            // Create Insert command
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "INSERT INTO Venues " +
                 "(Name, [Short Description], [Long Description]) VALUES ('" +
@@ -51,13 +53,18 @@ namespace JobFairs
                 shortDesc + "', '" +
                 longDesc + "')";
 
+            // Set command data
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Connection = sc;
+
+            // If the command works, return true
             if (cmd.ExecuteNonQuery() == 1)
             {
                 sc.Close();
                 return true;
             }
+
+            // Otherwise, return false
             sc.Close();
             return false;
         }

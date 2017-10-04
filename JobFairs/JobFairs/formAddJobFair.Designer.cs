@@ -54,7 +54,7 @@
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Location = new System.Drawing.Point(44, 100);
+            this.labelTitle.Location = new System.Drawing.Point(35, 44);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(27, 13);
             this.labelTitle.TabIndex = 0;
@@ -63,7 +63,7 @@
             // labelDesc
             // 
             this.labelDesc.AutoSize = true;
-            this.labelDesc.Location = new System.Drawing.Point(44, 125);
+            this.labelDesc.Location = new System.Drawing.Point(35, 69);
             this.labelDesc.Name = "labelDesc";
             this.labelDesc.Size = new System.Drawing.Size(60, 13);
             this.labelDesc.TabIndex = 1;
@@ -72,7 +72,7 @@
             // labelStartDate
             // 
             this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Location = new System.Drawing.Point(44, 150);
+            this.labelStartDate.Location = new System.Drawing.Point(35, 94);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(55, 13);
             this.labelStartDate.TabIndex = 2;
@@ -81,7 +81,7 @@
             // labelEndDate
             // 
             this.labelEndDate.AutoSize = true;
-            this.labelEndDate.Location = new System.Drawing.Point(44, 175);
+            this.labelEndDate.Location = new System.Drawing.Point(35, 119);
             this.labelEndDate.Name = "labelEndDate";
             this.labelEndDate.Size = new System.Drawing.Size(52, 13);
             this.labelEndDate.TabIndex = 3;
@@ -90,7 +90,7 @@
             // labelWebsite
             // 
             this.labelWebsite.AutoSize = true;
-            this.labelWebsite.Location = new System.Drawing.Point(44, 200);
+            this.labelWebsite.Location = new System.Drawing.Point(35, 144);
             this.labelWebsite.Name = "labelWebsite";
             this.labelWebsite.Size = new System.Drawing.Size(46, 13);
             this.labelWebsite.TabIndex = 4;
@@ -99,7 +99,7 @@
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(44, 225);
+            this.labelPhone.Location = new System.Drawing.Point(35, 169);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(38, 13);
             this.labelPhone.TabIndex = 5;
@@ -108,7 +108,7 @@
             // labelContact
             // 
             this.labelContact.AutoSize = true;
-            this.labelContact.Location = new System.Drawing.Point(44, 250);
+            this.labelContact.Location = new System.Drawing.Point(35, 194);
             this.labelContact.Name = "labelContact";
             this.labelContact.Size = new System.Drawing.Size(80, 13);
             this.labelContact.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             // buttonAddJobFair
             // 
-            this.buttonAddJobFair.Location = new System.Drawing.Point(273, 427);
+            this.buttonAddJobFair.Location = new System.Drawing.Point(210, 266);
             this.buttonAddJobFair.Name = "buttonAddJobFair";
             this.buttonAddJobFair.Size = new System.Drawing.Size(75, 23);
             this.buttonAddJobFair.TabIndex = 7;
@@ -126,21 +126,21 @@
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(132, 97);
+            this.tbTitle.Location = new System.Drawing.Point(123, 41);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(121, 20);
             this.tbTitle.TabIndex = 8;
             // 
             // tbDesc
             // 
-            this.tbDesc.Location = new System.Drawing.Point(132, 122);
+            this.tbDesc.Location = new System.Drawing.Point(123, 66);
             this.tbDesc.Name = "tbDesc";
             this.tbDesc.Size = new System.Drawing.Size(121, 20);
             this.tbDesc.TabIndex = 9;
             // 
             // tbStartDate
             // 
-            this.tbStartDate.Location = new System.Drawing.Point(132, 147);
+            this.tbStartDate.Location = new System.Drawing.Point(123, 91);
             this.tbStartDate.Name = "tbStartDate";
             this.tbStartDate.Size = new System.Drawing.Size(121, 20);
             this.tbStartDate.TabIndex = 10;
@@ -150,7 +150,7 @@
             // 
             // tbEndDate
             // 
-            this.tbEndDate.Location = new System.Drawing.Point(132, 172);
+            this.tbEndDate.Location = new System.Drawing.Point(123, 116);
             this.tbEndDate.Name = "tbEndDate";
             this.tbEndDate.Size = new System.Drawing.Size(121, 20);
             this.tbEndDate.TabIndex = 11;
@@ -160,14 +160,14 @@
             // 
             // tbWebsite
             // 
-            this.tbWebsite.Location = new System.Drawing.Point(132, 197);
+            this.tbWebsite.Location = new System.Drawing.Point(123, 141);
             this.tbWebsite.Name = "tbWebsite";
             this.tbWebsite.Size = new System.Drawing.Size(121, 20);
             this.tbWebsite.TabIndex = 12;
             // 
             // tbPhone
             // 
-            this.tbPhone.Location = new System.Drawing.Point(132, 222);
+            this.tbPhone.Location = new System.Drawing.Point(123, 166);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(121, 20);
             this.tbPhone.TabIndex = 13;
@@ -177,7 +177,7 @@
             this.cbContact.DataSource = this.peopleBindingSource;
             this.cbContact.DisplayMember = "First";
             this.cbContact.FormattingEnabled = true;
-            this.cbContact.Location = new System.Drawing.Point(132, 247);
+            this.cbContact.Location = new System.Drawing.Point(123, 191);
             this.cbContact.Name = "cbContact";
             this.cbContact.Size = new System.Drawing.Size(121, 21);
             this.cbContact.TabIndex = 14;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 500);
+            this.ClientSize = new System.Drawing.Size(333, 329);
             this.Controls.Add(this.cbContact);
             this.Controls.Add(this.tbPhone);
             this.Controls.Add(this.tbWebsite);

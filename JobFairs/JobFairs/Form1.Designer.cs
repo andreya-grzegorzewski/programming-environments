@@ -48,7 +48,7 @@
             // 
             // buttonAddPerson
             // 
-            this.buttonAddPerson.Location = new System.Drawing.Point(70, 160);
+            this.buttonAddPerson.Location = new System.Drawing.Point(52, 136);
             this.buttonAddPerson.Name = "buttonAddPerson";
             this.buttonAddPerson.Size = new System.Drawing.Size(169, 23);
             this.buttonAddPerson.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.labelAddData.AutoSize = true;
             this.labelAddData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelAddData.Location = new System.Drawing.Point(42, 131);
+            this.labelAddData.Location = new System.Drawing.Point(24, 107);
             this.labelAddData.Name = "labelAddData";
             this.labelAddData.Size = new System.Drawing.Size(69, 17);
             this.labelAddData.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // buttonAddVenue
             // 
-            this.buttonAddVenue.Location = new System.Drawing.Point(70, 189);
+            this.buttonAddVenue.Location = new System.Drawing.Point(52, 165);
             this.buttonAddVenue.Name = "buttonAddVenue";
             this.buttonAddVenue.Size = new System.Drawing.Size(169, 23);
             this.buttonAddVenue.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // buttonAddJobFair
             // 
-            this.buttonAddJobFair.Location = new System.Drawing.Point(70, 218);
+            this.buttonAddJobFair.Location = new System.Drawing.Point(52, 194);
             this.buttonAddJobFair.Name = "buttonAddJobFair";
             this.buttonAddJobFair.Size = new System.Drawing.Size(169, 23);
             this.buttonAddJobFair.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // buttonAssociateVenueWithJobFair
             // 
-            this.buttonAssociateVenueWithJobFair.Location = new System.Drawing.Point(70, 247);
+            this.buttonAssociateVenueWithJobFair.Location = new System.Drawing.Point(52, 223);
             this.buttonAssociateVenueWithJobFair.Name = "buttonAssociateVenueWithJobFair";
             this.buttonAssociateVenueWithJobFair.Size = new System.Drawing.Size(169, 23);
             this.buttonAssociateVenueWithJobFair.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 550);
+            this.ClientSize = new System.Drawing.Size(469, 281);
             this.Controls.Add(this.buttonAssociateVenueWithJobFair);
             this.Controls.Add(this.buttonAddJobFair);
             this.Controls.Add(this.buttonAddVenue);
