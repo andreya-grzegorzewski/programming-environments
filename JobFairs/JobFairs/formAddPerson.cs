@@ -52,12 +52,6 @@ namespace JobFairs
 
         private void tbTitle_Leave(object sender, EventArgs e)
         {
-            if (tbTitle.Text != "" && !int.TryParse(tbTitle.Text, out int tryOutput))
-            {
-                MessageBox.Show(this, "The Title field must be empty or contain an integer.", "Hold on!");
-                tbTitle.Text = "";
-                tbTitle.Focus();
-            }
         }
 
         private void tbState_Leave(object sender, EventArgs e)

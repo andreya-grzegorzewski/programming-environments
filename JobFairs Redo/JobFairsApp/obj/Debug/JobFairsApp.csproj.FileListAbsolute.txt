@@ -1,0 +1,14 @@
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\bin\Debug\JobFairsApp.exe.config
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\bin\Debug\JobFairsApp.exe
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\bin\Debug\JobFairsApp.pdb
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.csprojResolveAssemblyReference.cache
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.formAddJobFair.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.formAddVenue.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.MainForm.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.Properties.Resources.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.csproj.GenerateResource.Cache
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.csproj.CoreCompileInputs.cache
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.exe
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.pdb
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.formAddJobFairVenues.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairsApp\JobFairsApp\obj\Debug\JobFairsApp.formAddPerson.resources
