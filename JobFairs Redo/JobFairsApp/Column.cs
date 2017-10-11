@@ -31,6 +31,9 @@ namespace JobFairsApp
 
         public static bool VerifyPhone(string phone)
         {
+            if (phone.Length != 12)
+                return false;
+
             if (phone[3] != '-' || phone[7] != '-')
                 return false;
 

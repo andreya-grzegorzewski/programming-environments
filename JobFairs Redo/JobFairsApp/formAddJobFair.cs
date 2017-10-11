@@ -74,17 +74,32 @@ namespace JobFairsApp
 
         private void tbStartDate_Leave(object sender, EventArgs e)
         {
-
+            if (!Column.VerifyDate(tbStartDate.Text))
+            {
+                MessageBox.Show("Please enter a valid date (YYYY-MM-DD) of leave the field blank.", "Hold on!");
+                tbStartDate.Text = "";
+                tbStartDate.Focus();
+            }
         }
 
         private void tbEndDate_Leave(object sender, EventArgs e)
         {
-
+            if (!Column.VerifyDate(tbEndDate.Text))
+            {
+                MessageBox.Show("Please enter a valid date (YYYY-MM-DD) of leave the field blank.", "Hold on!");
+                tbEndDate.Text = "";
+                tbEndDate.Focus();
+            }
         }
 
         private void tbPhone_Leave(object sender, EventArgs e)
         {
-
+            if (!Column.VerifyPhone(tbPhone.Text))
+            {
+                MessageBox.Show("Please enter a valid phone number (###-###-####) or leave the field blank.", "Hold on!");
+                tbPhone.Text = "";
+                tbPhone.Focus();
+            }
         }
     }
 }
