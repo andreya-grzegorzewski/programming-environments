@@ -34,6 +34,7 @@
             this.buttonAddVenue = new System.Windows.Forms.Button();
             this.buttonAddJobFair = new System.Windows.Forms.Button();
             this.buttonAssociateVenueWithJobFair = new System.Windows.Forms.Button();
+            this.buttonAddCompany = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWelcome
@@ -96,11 +97,22 @@
             this.buttonAssociateVenueWithJobFair.UseVisualStyleBackColor = true;
             this.buttonAssociateVenueWithJobFair.Click += new System.EventHandler(this.buttonAssociateVenueWithJobFair_Click);
             // 
+            // buttonAddCompany
+            // 
+            this.buttonAddCompany.Location = new System.Drawing.Point(69, 227);
+            this.buttonAddCompany.Name = "buttonAddCompany";
+            this.buttonAddCompany.Size = new System.Drawing.Size(166, 23);
+            this.buttonAddCompany.TabIndex = 6;
+            this.buttonAddCompany.Text = "Company";
+            this.buttonAddCompany.UseVisualStyleBackColor = true;
+            this.buttonAddCompany.Click += new System.EventHandler(this.buttonAddCompany_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 386);
+            this.ClientSize = new System.Drawing.Size(593, 340);
+            this.Controls.Add(this.buttonAddCompany);
             this.Controls.Add(this.buttonAssociateVenueWithJobFair);
             this.Controls.Add(this.buttonAddJobFair);
             this.Controls.Add(this.buttonAddVenue);
@@ -122,6 +134,7 @@
         private System.Windows.Forms.Button buttonAddVenue;
         private System.Windows.Forms.Button buttonAddJobFair;
         private System.Windows.Forms.Button buttonAssociateVenueWithJobFair;
+        private System.Windows.Forms.Button buttonAddCompany;
     }
 }
 

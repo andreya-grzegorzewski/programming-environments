@@ -17,6 +17,7 @@ namespace JobFairsApp
         {
             InitializeComponent();
             SetUpTable();
+            StartPosition = FormStartPosition.CenterParent;
         }
 
         private void formAddJobFair_Load(object sender, EventArgs e)
@@ -30,8 +31,10 @@ namespace JobFairsApp
         {
             jobFairs.Columns[1].CurrentValue = tbTitle.Text.Replace("'", "''");
             jobFairs.Columns[2].CurrentValue = tbDesc.Text.Replace("'", "''");
-            jobFairs.Columns[3].CurrentValue = tbStartDate.Text;
-            jobFairs.Columns[4].CurrentValue = tbEndDate.Text;
+            if (tbStartDate.Text != "YYYY-MM-DD")
+                jobFairs.Columns[3].CurrentValue = tbStartDate.Text;
+            if (tbEndDate.Text != "YYYY-MM-DD")
+                jobFairs.Columns[4].CurrentValue = tbEndDate.Text;
             jobFairs.Columns[5].CurrentValue = tbWebsite.Text.Replace("'", "''");
             jobFairs.Columns[6].CurrentValue = tbPhone.Text;
             jobFairs.Columns[7].CurrentValue = cbContactPerson.SelectedValue.ToString();
@@ -42,7 +45,9 @@ namespace JobFairsApp
             }
             else
             {
-                // Use jobFairs.Columns[0].CurrentValue (id) to do candidate/interviewer stuff
+                formAddJobFairVenues form = new formAddJobFairVenues(Convert.ToInt32(jobFairs.Columns[0].CurrentValue), jobFairs.Columns[1].CurrentValue);
+                form.Show();
+                this.Close();
             }
         }
 

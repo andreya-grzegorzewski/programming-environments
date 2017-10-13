@@ -35,11 +35,16 @@
             this.labelAssocations = new System.Windows.Forms.Label();
             this.lbAssociations = new System.Windows.Forms.ListBox();
             this.cbJobFair = new System.Windows.Forms.ComboBox();
+            this.jobFairsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobFairDataSet = new JobFairsApp.JobFairDataSet();
             this.cbVenue = new System.Windows.Forms.ComboBox();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.jobFairsTableAdapter = new JobFairsApp.JobFairDataSetTableAdapters.JobFairsTableAdapter();
             this.venuesDataSet = new JobFairsApp.VenuesDataSet();
             this.venuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.venuesTableAdapter = new JobFairsApp.VenuesDataSetTableAdapters.VenuesTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.venuesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.venuesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -90,11 +95,24 @@
             // 
             // cbJobFair
             // 
+            this.cbJobFair.DataSource = this.jobFairsBindingSource;
+            this.cbJobFair.DisplayMember = "Title";
             this.cbJobFair.FormattingEnabled = true;
             this.cbJobFair.Location = new System.Drawing.Point(114, 89);
             this.cbJobFair.Name = "cbJobFair";
             this.cbJobFair.Size = new System.Drawing.Size(146, 21);
             this.cbJobFair.TabIndex = 5;
+            this.cbJobFair.ValueMember = "ID";
+            // 
+            // jobFairsBindingSource
+            // 
+            this.jobFairsBindingSource.DataMember = "JobFairs";
+            this.jobFairsBindingSource.DataSource = this.jobFairDataSet;
+            // 
+            // jobFairDataSet
+            // 
+            this.jobFairDataSet.DataSetName = "JobFairDataSet";
+            this.jobFairDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cbVenue
             // 
@@ -115,6 +133,11 @@
             this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Add Venue to Job Fair";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // jobFairsTableAdapter
+            // 
+            this.jobFairsTableAdapter.ClearBeforeFill = true;
             // 
             // venuesDataSet
             // 
@@ -146,6 +169,8 @@
             this.Name = "formAddJobFairVenues";
             this.Text = "Add Venue to Job Fair";
             this.Load += new System.EventHandler(this.formAddJobFairVenues_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.venuesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.venuesBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -163,6 +188,9 @@
         private System.Windows.Forms.ComboBox cbJobFair;
         private System.Windows.Forms.ComboBox cbVenue;
         private System.Windows.Forms.Button buttonAdd;
+        private JobFairDataSet jobFairDataSet;
+        private System.Windows.Forms.BindingSource jobFairsBindingSource;
+        private JobFairDataSetTableAdapters.JobFairsTableAdapter jobFairsTableAdapter;
         private VenuesDataSet venuesDataSet;
         private System.Windows.Forms.BindingSource venuesBindingSource;
         private VenuesDataSetTableAdapters.VenuesTableAdapter venuesTableAdapter;

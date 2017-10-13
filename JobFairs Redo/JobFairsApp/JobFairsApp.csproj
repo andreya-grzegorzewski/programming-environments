@@ -52,6 +52,12 @@
       <DependentUpon>ContactPersonDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="formAddCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAddCompany.Designer.cs">
+      <DependentUpon>formAddCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="formAddJobFair.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,11 @@
     <Compile Include="formAddVenue.Designer.cs">
       <DependentUpon>formAddVenue.cs</DependentUpon>
     </Compile>
+    <Compile Include="JobFairDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobFairDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +101,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VenuesDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="formAddCompany.resx">
+      <DependentUpon>formAddCompany.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formAddJobFair.resx">
       <DependentUpon>formAddJobFair.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +138,17 @@
     </None>
     <None Include="ContactPersonDataSet.xss">
       <DependentUpon>ContactPersonDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="JobFairDataSet.xsc">
+      <DependentUpon>JobFairDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="JobFairDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>JobFairDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="JobFairDataSet.xss">
+      <DependentUpon>JobFairDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

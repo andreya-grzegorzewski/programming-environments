@@ -54,5 +54,11 @@ namespace JobFairsApp
             //Database db = new Database(connStr, "JobFairs", )
 
         }
+
+        private void buttonAddCompany_Click(object sender, EventArgs e)
+        {
+            formAddCompany form = new formAddCompany();
+            form.ShowDialog(this);
+        }
     }
 }
