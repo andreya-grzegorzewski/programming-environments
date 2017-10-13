@@ -13,6 +13,8 @@ namespace JobFairsApp
     public partial class formAddJobFair : Form
     {
         Table jobFairs;
+        Table jobFairDays;
+
         public formAddJobFair()
         {
             InitializeComponent();
@@ -45,6 +47,28 @@ namespace JobFairsApp
             }
             else
             {
+                // This script borrowed from https://www.dbrnd.com/2015/08/list-all-dates-between-two-dates-in-sql-server/
+                string command = "DECLARE @StartDate DATE " +
+                    "DECLARE @EndDate DATE " +
+                    "SET @StartDate = '" + tbStartDate.Text + "' " +
+                    "SET @EndDate = '" + tbEndDate.Text + "'; " +
+                    "WITH DateRange(DateData) AS ( " +
+                        "SELECT @StartDate as Date " +
+                        "UNION ALL " +
+                        "SELECT DATEADD(d, 1, DateData) " +
+                        "FROM DateRange " +
+                        "WHERE DateData < @EndDate) " +
+                    "SELECT DateData " +
+                    "FROM DateRange;";
+
+                List<string> dates = Table.Read(command, 1);
+                jobFairDays.Columns[1].CurrentValue = jobFairs.Columns[0].CurrentValue;
+
+                for (int i = 0; i < dates.Count; i++)
+                {
+                    jobFairDays.Columns[2].CurrentValue = dates[i];
+                    jobFairDays.InsertRow();
+                }
                 formAddJobFairVenues form = new formAddJobFairVenues(Convert.ToInt32(jobFairs.Columns[0].CurrentValue), jobFairs.Columns[1].CurrentValue);
                 form.Show();
                 this.Close();
@@ -75,6 +99,19 @@ namespace JobFairsApp
             };
 
             jobFairs = new Table("JobFairs", columns);
+
+            Column jfdID = new Column("ID");
+            Column jobFairID = new Column("JobFairID");
+            Column date = new Column("Date");
+
+            List<Column> jfdColumns = new List<Column>
+            {
+                jfdID,
+                jobFairID,
+                date
+            };
+
+            jobFairDays = new Table("JobFairDays", jfdColumns);
         }
 
         private void tbStartDate_Leave(object sender, EventArgs e)

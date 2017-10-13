@@ -12,7 +12,7 @@ namespace JobFairsApp
     {
         private string name = "";
         private List<Column> columns = new List<Column>();
-        private string connStr = @"Data Source = localhost\SQLEXPRESS; Initial Catalog = JobFair; Integrated Security = True";
+        private static string connStr = @"Data Source = localhost\SQLEXPRESS; Initial Catalog = JobFair; Integrated Security = True";
 
         public Table(string name, List<Column> columns)
         {
@@ -93,7 +93,7 @@ namespace JobFairsApp
         /// <param name="command">The CommandText for a SqlCommand object</param>
         /// <param name="columns">The number of columns that will be selected by the command</param>
         /// <returns></returns>
-        public List<string> Read(string command, int columns)
+        public static List<string> Read(string command, int columns)
         {
             // Connect to the DB
             SqlConnection sc = new SqlConnection(connStr);
@@ -117,7 +117,15 @@ namespace JobFairsApp
                 {
                     for (int i = 0; i < columns; i++)
                     {
-                        results.Add(reader.GetString(i));
+                        string type = reader.GetDataTypeName(i);
+                        if (type == "varchar")
+                            results.Add(reader.GetString(i));
+                        else if (type == "date")
+                        {
+                            string date = reader.GetDateTime(i).ToString();
+                            date = date.Substring(0, date.IndexOf(" 12:00:00 AM"));
+                            results.Add(date);
+                        }
                     }
                 }
             }
