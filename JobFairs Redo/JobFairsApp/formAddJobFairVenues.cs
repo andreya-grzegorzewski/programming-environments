@@ -39,10 +39,10 @@ namespace JobFairsApp
 
         private void formAddJobFairVenues_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'jobFairDataSet.JobFairs' table. You can move, or remove it, as needed.
-            this.jobFairsTableAdapter.Fill(this.jobFairDataSet.JobFairs);
             // TODO: This line of code loads data into the 'venuesDataSet.Venues' table. You can move, or remove it, as needed.
             this.venuesTableAdapter.Fill(this.venuesDataSet.Venues);
+            // TODO: This line of code loads data into the 'jobFairDataSet.JobFairs' table. You can move, or remove it, as needed.
+            this.jobFairsTableAdapter.Fill(this.jobFairDataSet.JobFairs);
         }
 
         private void SetUpTable()
@@ -117,6 +117,16 @@ namespace JobFairsApp
             jobFairVenues.InsertRow();
 
             FillListBox();
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            if (givenJobFairID != -1)
+            {
+                formAddLocation form = new formAddLocation(givenJobFairID);
+                form.ShowDialog(this);
+            }
         }
     }
 }

@@ -27,3 +27,4 @@ C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFair
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.exe
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.pdb
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.formAddCompany.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.formAddLocation.resources

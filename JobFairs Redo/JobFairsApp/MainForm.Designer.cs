@@ -35,6 +35,7 @@
             this.buttonAddJobFair = new System.Windows.Forms.Button();
             this.buttonAssociateVenueWithJobFair = new System.Windows.Forms.Button();
             this.buttonAddCompany = new System.Windows.Forms.Button();
+            this.btnAddLocation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWelcome
@@ -107,11 +108,22 @@
             this.buttonAddCompany.UseVisualStyleBackColor = true;
             this.buttonAddCompany.Click += new System.EventHandler(this.buttonAddCompany_Click);
             // 
+            // btnAddLocation
+            // 
+            this.btnAddLocation.Location = new System.Drawing.Point(69, 257);
+            this.btnAddLocation.Name = "btnAddLocation";
+            this.btnAddLocation.Size = new System.Drawing.Size(166, 23);
+            this.btnAddLocation.TabIndex = 7;
+            this.btnAddLocation.Text = "Location";
+            this.btnAddLocation.UseVisualStyleBackColor = true;
+            this.btnAddLocation.Click += new System.EventHandler(this.btnAddLocation_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 340);
+            this.Controls.Add(this.btnAddLocation);
             this.Controls.Add(this.buttonAddCompany);
             this.Controls.Add(this.buttonAssociateVenueWithJobFair);
             this.Controls.Add(this.buttonAddJobFair);
@@ -135,6 +147,7 @@
         private System.Windows.Forms.Button buttonAddJobFair;
         private System.Windows.Forms.Button buttonAssociateVenueWithJobFair;
         private System.Windows.Forms.Button buttonAddCompany;
+        private System.Windows.Forms.Button btnAddLocation;
     }
 }
 

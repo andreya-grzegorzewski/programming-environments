@@ -60,5 +60,11 @@ namespace JobFairsApp
             formAddCompany form = new formAddCompany();
             form.ShowDialog(this);
         }
+
+        private void btnAddLocation_Click(object sender, EventArgs e)
+        {
+            formAddLocation form = new formAddLocation();
+            form.ShowDialog(this);
+        }
     }
 }

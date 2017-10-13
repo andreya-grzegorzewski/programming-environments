@@ -70,6 +70,12 @@
     <Compile Include="formAddJobFairVenues.Designer.cs">
       <DependentUpon>formAddJobFairVenues.cs</DependentUpon>
     </Compile>
+    <Compile Include="formAddLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAddLocation.Designer.cs">
+      <DependentUpon>formAddLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="formAddPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formAddJobFairVenues.resx">
       <DependentUpon>formAddJobFairVenues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formAddLocation.resx">
+      <DependentUpon>formAddLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formAddPerson.resx">
       <DependentUpon>formAddPerson.cs</DependentUpon>
