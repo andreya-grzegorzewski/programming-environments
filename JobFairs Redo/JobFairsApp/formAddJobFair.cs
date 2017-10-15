@@ -14,6 +14,12 @@ namespace JobFairsApp
     {
         Table jobFairs;
         Table jobFairDays;
+        Table timeSlots;
+
+        // Time slot table data
+        int startHour = 9;
+        int endHour = 17;
+        int interval = 20;
 
         public formAddJobFair()
         {
@@ -63,11 +69,36 @@ namespace JobFairsApp
 
                 List<string> dates = Table.Read(command, 1);
                 jobFairDays.Columns[1].CurrentValue = jobFairs.Columns[0].CurrentValue;
+                timeSlots.Columns[1].CurrentValue = jobFairs.Columns[0].CurrentValue;
+
+                // Variables for entering time slot data
+                int minute = 0;
+                string startTime;
+                string endTime;
 
                 for (int i = 0; i < dates.Count; i++)
                 {
                     jobFairDays.Columns[2].CurrentValue = dates[i];
                     jobFairDays.InsertRow();
+
+                    for (int hour = startHour; hour < endHour; hour++)
+                    {
+                        timeSlots.Columns[2].CurrentValue = jobFairDays.Columns[0].CurrentValue;
+                        endTime = hour + ":" + minute.ToString("00") + ":00";
+
+                        while (minute <= (60 - interval)) {
+                            startTime = endTime;
+                            minute += interval;
+                            if (minute == 60)
+                                endTime = (hour + 1) + ":00:00";
+                            else
+                                endTime = hour + ":" + minute.ToString("00") + ":00";
+                            timeSlots.Columns[3].CurrentValue = startTime;
+                            timeSlots.Columns[4].CurrentValue = endTime;
+                            timeSlots.InsertRow();
+                        }
+                        minute = minute % 60;
+                    }
                 }
                 formAddJobFairVenues form = new formAddJobFairVenues(Convert.ToInt32(jobFairs.Columns[0].CurrentValue), jobFairs.Columns[1].CurrentValue);
                 form.Show();
@@ -77,41 +108,58 @@ namespace JobFairsApp
 
         private void SetUpTable()
         {
-            Column id = new Column("ID");
-            Column title = new Column("Title");
-            Column desc = new Column("Description");
-            Column startDate = new Column("StartDate");
-            Column endDate = new Column("EndDate");
-            Column website = new Column("Website");
-            Column phone = new Column("Phone");
-            Column contactPersonID = new Column("ContactPersonID");
+            Column jobFairID = new Column("ID");
+            Column jobFairTitle = new Column("Title");
+            Column jobFairDesc = new Column("Description");
+            Column jobFairStartDate = new Column("StartDate");
+            Column jobFairEndDate = new Column("EndDate");
+            Column jobFairWebsite = new Column("Website");
+            Column jobFairPhone = new Column("Phone");
+            Column jobFairContactPersonID = new Column("ContactPersonID");
 
             List<Column> columns = new List<Column>
             {
-                id,
-                title,
-                desc,
-                startDate,
-                endDate,
-                website,
-                phone,
-                contactPersonID
+                jobFairID,
+                jobFairTitle,
+                jobFairDesc,
+                jobFairStartDate,
+                jobFairEndDate,
+                jobFairWebsite,
+                jobFairPhone,
+                jobFairContactPersonID
             };
 
             jobFairs = new Table("JobFairs", columns);
 
-            Column jfdID = new Column("ID");
-            Column jobFairID = new Column("JobFairID");
-            Column date = new Column("Date");
+            Column jobFairDaysID = new Column("ID");
+            Column jobFairDaysJobFairID = new Column("JobFairID");
+            Column jobFairDaysDate = new Column("Date");
 
             List<Column> jfdColumns = new List<Column>
             {
-                jfdID,
-                jobFairID,
-                date
+                jobFairDaysID,
+                jobFairDaysJobFairID,
+                jobFairDaysDate
             };
 
             jobFairDays = new Table("JobFairDays", jfdColumns);
+
+            Column timeSlotID = new Column("ID");
+            Column timeSlotJobFairID = new Column("JobFairID");
+            Column timeSlotDayID = new Column("DayID");
+            Column timeSlotStartTime = new Column("StartTime");
+            Column timeSlotEndTime = new Column("EndTime");
+
+            List<Column> tsColumns = new List<Column>
+            {
+                timeSlotID,
+                timeSlotJobFairID,
+                timeSlotDayID,
+                timeSlotStartTime,
+                timeSlotEndTime
+            };
+
+            timeSlots = new Table("TimeSlots", tsColumns);
         }
 
         private void tbStartDate_Leave(object sender, EventArgs e)

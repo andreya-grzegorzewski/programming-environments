@@ -83,7 +83,9 @@ namespace JobFairsApp
             }
             else
             {
-                // Use people.Columns[0].CurrentValue (id) to do candidate/interviewer stuff
+                this.Close();
+                formAddJobFairPerson form = new formAddJobFairPerson(Convert.ToInt32(people.Columns[0].CurrentValue), checkBoxCandidate.Checked, checkBoxInterviewer.Checked);
+                form.ShowDialog(this);
             }
         }
 

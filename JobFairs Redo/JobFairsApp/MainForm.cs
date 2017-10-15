@@ -66,5 +66,11 @@ namespace JobFairsApp
             formAddLocation form = new formAddLocation();
             form.ShowDialog(this);
         }
+
+        private void buttonAssociatePersonWithJobFair_Click(object sender, EventArgs e)
+        {
+            formAddJobFairPerson form = new formAddJobFairPerson();
+            form.ShowDialog(this);
+        }
     }
 }

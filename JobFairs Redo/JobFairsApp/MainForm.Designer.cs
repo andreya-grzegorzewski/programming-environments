@@ -36,6 +36,7 @@
             this.buttonAssociateVenueWithJobFair = new System.Windows.Forms.Button();
             this.buttonAddCompany = new System.Windows.Forms.Button();
             this.btnAddLocation = new System.Windows.Forms.Button();
+            this.buttonAssociatePersonWithJobFair = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWelcome
@@ -118,11 +119,22 @@
             this.btnAddLocation.UseVisualStyleBackColor = true;
             this.btnAddLocation.Click += new System.EventHandler(this.btnAddLocation_Click);
             // 
+            // buttonAssociatePersonWithJobFair
+            // 
+            this.buttonAssociatePersonWithJobFair.Location = new System.Drawing.Point(69, 286);
+            this.buttonAssociatePersonWithJobFair.Name = "buttonAssociatePersonWithJobFair";
+            this.buttonAssociatePersonWithJobFair.Size = new System.Drawing.Size(166, 23);
+            this.buttonAssociatePersonWithJobFair.TabIndex = 8;
+            this.buttonAssociatePersonWithJobFair.Text = "Associate Person with Job Fair";
+            this.buttonAssociatePersonWithJobFair.UseVisualStyleBackColor = true;
+            this.buttonAssociatePersonWithJobFair.Click += new System.EventHandler(this.buttonAssociatePersonWithJobFair_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 340);
+            this.Controls.Add(this.buttonAssociatePersonWithJobFair);
             this.Controls.Add(this.btnAddLocation);
             this.Controls.Add(this.buttonAddCompany);
             this.Controls.Add(this.buttonAssociateVenueWithJobFair);
@@ -148,6 +160,7 @@
         private System.Windows.Forms.Button buttonAssociateVenueWithJobFair;
         private System.Windows.Forms.Button buttonAddCompany;
         private System.Windows.Forms.Button btnAddLocation;
+        private System.Windows.Forms.Button buttonAssociatePersonWithJobFair;
     }
 }
 
