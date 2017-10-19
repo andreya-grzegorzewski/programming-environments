@@ -72,5 +72,11 @@ namespace JobFairsApp
             formAddJobFairPerson form = new formAddJobFairPerson();
             form.ShowDialog(this);
         }
+
+        private void buttonAddTable_Click(object sender, EventArgs e)
+        {
+            formAddTables form = new formAddTables();
+            form.ShowDialog(this);
+        }
     }
 }

@@ -116,6 +116,12 @@
     <Compile Include="formAddPersonSpecialties.Designer.cs">
       <DependentUpon>formAddPersonSpecialties.cs</DependentUpon>
     </Compile>
+    <Compile Include="formAddTables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAddTables.Designer.cs">
+      <DependentUpon>formAddTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="formAddVenue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formAddPersonSpecialties.resx">
       <DependentUpon>formAddPersonSpecialties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formAddTables.resx">
+      <DependentUpon>formAddTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formAddVenue.resx">
       <DependentUpon>formAddVenue.cs</DependentUpon>

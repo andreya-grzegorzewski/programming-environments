@@ -37,6 +37,7 @@
             this.buttonAddCompany = new System.Windows.Forms.Button();
             this.btnAddLocation = new System.Windows.Forms.Button();
             this.buttonAssociatePersonWithJobFair = new System.Windows.Forms.Button();
+            this.buttonAddTable = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWelcome
@@ -129,11 +130,22 @@
             this.buttonAssociatePersonWithJobFair.UseVisualStyleBackColor = true;
             this.buttonAssociatePersonWithJobFair.Click += new System.EventHandler(this.buttonAssociatePersonWithJobFair_Click);
             // 
+            // buttonAddTable
+            // 
+            this.buttonAddTable.Location = new System.Drawing.Point(69, 315);
+            this.buttonAddTable.Name = "buttonAddTable";
+            this.buttonAddTable.Size = new System.Drawing.Size(166, 23);
+            this.buttonAddTable.TabIndex = 9;
+            this.buttonAddTable.Text = "Table";
+            this.buttonAddTable.UseVisualStyleBackColor = true;
+            this.buttonAddTable.Click += new System.EventHandler(this.buttonAddTable_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 340);
+            this.ClientSize = new System.Drawing.Size(593, 365);
+            this.Controls.Add(this.buttonAddTable);
             this.Controls.Add(this.buttonAssociatePersonWithJobFair);
             this.Controls.Add(this.btnAddLocation);
             this.Controls.Add(this.buttonAddCompany);
@@ -161,6 +173,7 @@
         private System.Windows.Forms.Button buttonAddCompany;
         private System.Windows.Forms.Button btnAddLocation;
         private System.Windows.Forms.Button buttonAssociatePersonWithJobFair;
+        private System.Windows.Forms.Button buttonAddTable;
     }
 }
 

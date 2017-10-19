@@ -101,7 +101,9 @@ namespace JobFairsApp
                     }
                 }
                 formAddJobFairVenues form = new formAddJobFairVenues(Convert.ToInt32(jobFairs.Columns[0].CurrentValue), jobFairs.Columns[1].CurrentValue);
-                form.Show();
+                form.ShowDialog(this);
+                formAddTables formT = new formAddTables(Convert.ToInt32(jobFairs.Columns[0].CurrentValue));
+                formT.ShowDialog(this);
                 this.Close();
             }
         }

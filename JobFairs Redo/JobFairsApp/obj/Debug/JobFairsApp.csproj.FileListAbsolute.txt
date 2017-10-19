@@ -32,3 +32,4 @@ C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFair
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.formAddCandidate.resources
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.formAddInterviewer.resources
 C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.formAddPersonSpecialties.resources
+C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\JobFairsApp\obj\Debug\JobFairsApp.formAddTables.resources

@@ -126,6 +126,10 @@ namespace JobFairsApp
                             date = date.Substring(0, date.IndexOf(" 12:00:00 AM"));
                             results.Add(date);
                         }
+                        else if (type == "int")
+                        {
+                            results.Add(reader.GetInt32(i).ToString());
+                        }
                     }
                 }
             }
