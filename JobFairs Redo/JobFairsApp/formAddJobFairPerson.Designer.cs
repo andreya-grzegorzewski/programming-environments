@@ -32,19 +32,19 @@
             this.labelJobFair = new System.Windows.Forms.Label();
             this.labelPerson = new System.Windows.Forms.Label();
             this.lbJobFair = new System.Windows.Forms.ListBox();
+            this.jobFairsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobFairDataSet = new JobFairsApp.JobFairDataSet();
             this.lbPerson = new System.Windows.Forms.ListBox();
+            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactPersonDataSet = new JobFairsApp.ContactPersonDataSet();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
-            this.jobFairDataSet = new JobFairsApp.JobFairDataSet();
-            this.jobFairsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jobFairsTableAdapter = new JobFairsApp.JobFairDataSetTableAdapters.JobFairsTableAdapter();
-            this.contactPersonDataSet = new JobFairsApp.ContactPersonDataSet();
-            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.peopleTableAdapter = new JobFairsApp.ContactPersonDataSetTableAdapters.PeopleTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // labelJobFair
@@ -76,6 +76,16 @@
             this.lbJobFair.TabIndex = 2;
             this.lbJobFair.ValueMember = "ID";
             // 
+            // jobFairsBindingSource
+            // 
+            this.jobFairsBindingSource.DataMember = "JobFairs";
+            this.jobFairsBindingSource.DataSource = this.jobFairDataSet;
+            // 
+            // jobFairDataSet
+            // 
+            this.jobFairDataSet.DataSetName = "JobFairDataSet";
+            this.jobFairDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lbPerson
             // 
             this.lbPerson.DataSource = this.peopleBindingSource;
@@ -86,6 +96,16 @@
             this.lbPerson.Size = new System.Drawing.Size(187, 238);
             this.lbPerson.TabIndex = 3;
             this.lbPerson.ValueMember = "ID";
+            // 
+            // peopleBindingSource
+            // 
+            this.peopleBindingSource.DataMember = "People";
+            this.peopleBindingSource.DataSource = this.contactPersonDataSet;
+            // 
+            // contactPersonDataSet
+            // 
+            this.contactPersonDataSet.DataSetName = "ContactPersonDataSet";
+            this.contactPersonDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnConfirm
             // 
@@ -107,29 +127,9 @@
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
-            // jobFairDataSet
-            // 
-            this.jobFairDataSet.DataSetName = "JobFairDataSet";
-            this.jobFairDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // jobFairsBindingSource
-            // 
-            this.jobFairsBindingSource.DataMember = "JobFairs";
-            this.jobFairsBindingSource.DataSource = this.jobFairDataSet;
-            // 
             // jobFairsTableAdapter
             // 
             this.jobFairsTableAdapter.ClearBeforeFill = true;
-            // 
-            // contactPersonDataSet
-            // 
-            this.contactPersonDataSet.DataSetName = "ContactPersonDataSet";
-            this.contactPersonDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // peopleBindingSource
-            // 
-            this.peopleBindingSource.DataMember = "People";
-            this.peopleBindingSource.DataSource = this.contactPersonDataSet;
             // 
             // peopleTableAdapter
             // 
@@ -147,12 +147,12 @@
             this.Controls.Add(this.labelPerson);
             this.Controls.Add(this.labelJobFair);
             this.Name = "formAddJobFairPerson";
-            this.Text = "formAddJobFairPerson";
+            this.Text = "Associate People with Job Fairs";
             this.Load += new System.EventHandler(this.formAddJobFairPerson_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

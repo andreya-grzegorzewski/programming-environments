@@ -150,7 +150,7 @@
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnAddTable);
             this.Name = "formAddTables";
-            this.Text = "formAddTables";
+            this.Text = "Add Tables";
             this.Load += new System.EventHandler(this.formAddTables_Load);
             ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).EndInit();

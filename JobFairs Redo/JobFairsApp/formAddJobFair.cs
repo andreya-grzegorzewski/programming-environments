@@ -17,8 +17,9 @@ namespace JobFairsApp
         Table timeSlots;
 
         // Time slot table data
-        int startHour = 9;
-        int endHour = 17;
+        int offset = 9;
+        int startHour;
+        int endHour;
         int interval = 20;
 
         public formAddJobFair()
@@ -26,6 +27,22 @@ namespace JobFairsApp
             InitializeComponent();
             SetUpTable();
             StartPosition = FormStartPosition.CenterParent;
+            cbIntStart.Items.Add("9:00 AM");
+            for (int i = 10; i < 12; i++)
+            {
+                cbIntStart.Items.Add(i + ":00 AM");
+                cbIntEnd.Items.Add(i + ":00 AM");
+            }
+            cbIntStart.Items.Add("12:00 PM");
+            cbIntEnd.Items.Add("12:00 PM");
+            for (int i = 1; i < 5; i++)
+            {
+                cbIntStart.Items.Add(i + ":00 PM");
+                cbIntEnd.Items.Add(i + ":00 PM");
+            }
+            cbIntEnd.Items.Add("5:00 PM");
+            cbIntStart.SelectedIndex = 0;
+            cbIntEnd.SelectedIndex = cbIntEnd.Items.Count - 1;
         }
 
         private void formAddJobFair_Load(object sender, EventArgs e)
@@ -75,6 +92,8 @@ namespace JobFairsApp
                 int minute = 0;
                 string startTime;
                 string endTime;
+                startHour = offset + cbIntStart.SelectedIndex;
+                endHour = offset + 1 + cbIntStart.SelectedIndex + cbIntEnd.SelectedIndex;
 
                 for (int i = 0; i < dates.Count; i++)
                 {
@@ -168,7 +187,7 @@ namespace JobFairsApp
         {
             if (!Column.VerifyDate(tbStartDate.Text))
             {
-                MessageBox.Show("Please enter a valid date (YYYY-MM-DD) of leave the field blank.", "Hold on!");
+                MessageBox.Show("Please enter a valid date (YYYY-MM-DD).", "Hold on!");
                 tbStartDate.Text = "";
                 tbStartDate.Focus();
             }
@@ -178,7 +197,7 @@ namespace JobFairsApp
         {
             if (!Column.VerifyDate(tbEndDate.Text))
             {
-                MessageBox.Show("Please enter a valid date (YYYY-MM-DD) of leave the field blank.", "Hold on!");
+                MessageBox.Show("Please enter a valid date (YYYY-MM-DD).", "Hold on!");
                 tbEndDate.Text = "";
                 tbEndDate.Focus();
             }
@@ -186,12 +205,34 @@ namespace JobFairsApp
 
         private void tbPhone_Leave(object sender, EventArgs e)
         {
-            if (!Column.VerifyPhone(tbPhone.Text))
+            if (!Column.VerifyPhone(tbPhone.Text) && tbPhone.Text.Length != 0)
             {
                 MessageBox.Show("Please enter a valid phone number (###-###-####) or leave the field blank.", "Hold on!");
                 tbPhone.Text = "";
                 tbPhone.Focus();
             }
+        }
+
+        private void cbIntStart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int start = offset + 1 + cbIntStart.SelectedIndex;
+            cbIntEnd.Items.Clear();
+            for (int i = start; i < 12; i++)
+            {
+                cbIntEnd.Items.Add(i + ":00 AM");
+            }
+
+            if (start <= 12)
+            {
+                cbIntEnd.Items.Add("12:00 PM");
+                start = 13;
+            }
+
+            for (int i = start; i <= 17; i++)
+            {
+                cbIntEnd.Items.Add((i - 12).ToString() + ":00 PM");
+            }
+            cbIntEnd.SelectedIndex = cbIntEnd.Items.Count - 1;
         }
     }
 }

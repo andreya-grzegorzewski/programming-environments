@@ -37,11 +37,11 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.cbJobFair = new System.Windows.Forms.ComboBox();
-            this.jobFairDataSet = new JobFairsApp.JobFairDataSet();
             this.jobFairsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobFairDataSet = new JobFairsApp.JobFairDataSet();
             this.jobFairsTableAdapter = new JobFairsApp.JobFairDataSetTableAdapters.JobFairsTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // labelJobFair
@@ -116,15 +116,15 @@
             this.cbJobFair.TabIndex = 7;
             this.cbJobFair.ValueMember = "ID";
             // 
-            // jobFairDataSet
-            // 
-            this.jobFairDataSet.DataSetName = "JobFairDataSet";
-            this.jobFairDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // jobFairsBindingSource
             // 
             this.jobFairsBindingSource.DataMember = "JobFairs";
             this.jobFairsBindingSource.DataSource = this.jobFairDataSet;
+            // 
+            // jobFairDataSet
+            // 
+            this.jobFairDataSet.DataSetName = "JobFairDataSet";
+            this.jobFairDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // jobFairsTableAdapter
             // 
@@ -144,10 +144,10 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelJobFair);
             this.Name = "formAddLocation";
-            this.Text = "formAddLocation";
+            this.Text = "Add Locations";
             this.Load += new System.EventHandler(this.formAddLocation_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobFairsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobFairDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

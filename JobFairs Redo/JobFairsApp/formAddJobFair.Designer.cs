@@ -43,12 +43,16 @@
             this.tbWebsite = new System.Windows.Forms.TextBox();
             this.tbPhone = new System.Windows.Forms.TextBox();
             this.cbContactPerson = new System.Windows.Forms.ComboBox();
-            this.btnAddJobFair = new System.Windows.Forms.Button();
-            this.contactPersonDataSet = new JobFairsApp.ContactPersonDataSet();
             this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactPersonDataSet = new JobFairsApp.ContactPersonDataSet();
+            this.btnAddJobFair = new System.Windows.Forms.Button();
             this.peopleTableAdapter = new JobFairsApp.ContactPersonDataSetTableAdapters.PeopleTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).BeginInit();
+            this.labelIntStart = new System.Windows.Forms.Label();
+            this.labelIntEnd = new System.Windows.Forms.Label();
+            this.cbIntStart = new System.Windows.Forms.ComboBox();
+            this.cbIntEnd = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -172,9 +176,19 @@
             this.cbContactPerson.TabIndex = 13;
             this.cbContactPerson.ValueMember = "ID";
             // 
+            // peopleBindingSource
+            // 
+            this.peopleBindingSource.DataMember = "People";
+            this.peopleBindingSource.DataSource = this.contactPersonDataSet;
+            // 
+            // contactPersonDataSet
+            // 
+            this.contactPersonDataSet.DataSetName = "ContactPersonDataSet";
+            this.contactPersonDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnAddJobFair
             // 
-            this.btnAddJobFair.Location = new System.Drawing.Point(231, 254);
+            this.btnAddJobFair.Location = new System.Drawing.Point(240, 277);
             this.btnAddJobFair.Name = "btnAddJobFair";
             this.btnAddJobFair.Size = new System.Drawing.Size(75, 23);
             this.btnAddJobFair.TabIndex = 14;
@@ -182,25 +196,56 @@
             this.btnAddJobFair.UseVisualStyleBackColor = true;
             this.btnAddJobFair.Click += new System.EventHandler(this.btnAddJobFair_Click);
             // 
-            // contactPersonDataSet
-            // 
-            this.contactPersonDataSet.DataSetName = "ContactPersonDataSet";
-            this.contactPersonDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // peopleBindingSource
-            // 
-            this.peopleBindingSource.DataMember = "People";
-            this.peopleBindingSource.DataSource = this.contactPersonDataSet;
-            // 
             // peopleTableAdapter
             // 
             this.peopleTableAdapter.ClearBeforeFill = true;
+            // 
+            // labelIntStart
+            // 
+            this.labelIntStart.AutoSize = true;
+            this.labelIntStart.Location = new System.Drawing.Point(38, 214);
+            this.labelIntStart.Name = "labelIntStart";
+            this.labelIntStart.Size = new System.Drawing.Size(101, 13);
+            this.labelIntStart.TabIndex = 15;
+            this.labelIntStart.Text = "Interview Start Time";
+            // 
+            // labelIntEnd
+            // 
+            this.labelIntEnd.AutoSize = true;
+            this.labelIntEnd.Location = new System.Drawing.Point(38, 241);
+            this.labelIntEnd.Name = "labelIntEnd";
+            this.labelIntEnd.Size = new System.Drawing.Size(98, 13);
+            this.labelIntEnd.TabIndex = 16;
+            this.labelIntEnd.Text = "Interview End Time";
+            // 
+            // cbIntStart
+            // 
+            this.cbIntStart.FormattingEnabled = true;
+            this.cbIntStart.Location = new System.Drawing.Point(139, 211);
+            this.cbIntStart.Name = "cbIntStart";
+            this.cbIntStart.Size = new System.Drawing.Size(131, 21);
+            this.cbIntStart.TabIndex = 17;
+            this.cbIntStart.ValueMember = "ID";
+            this.cbIntStart.SelectedIndexChanged += new System.EventHandler(this.cbIntStart_SelectedIndexChanged);
+            // 
+            // cbIntEnd
+            // 
+            this.cbIntEnd.FormattingEnabled = true;
+            this.cbIntEnd.Location = new System.Drawing.Point(139, 238);
+            this.cbIntEnd.Name = "cbIntEnd";
+            this.cbIntEnd.Size = new System.Drawing.Size(131, 21);
+            this.cbIntEnd.TabIndex = 18;
+            this.cbIntEnd.ValueMember = "ID";
             // 
             // formAddJobFair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 322);
+            this.Controls.Add(this.cbIntEnd);
+            this.Controls.Add(this.cbIntStart);
+            this.Controls.Add(this.labelIntEnd);
+            this.Controls.Add(this.labelIntStart);
             this.Controls.Add(this.btnAddJobFair);
             this.Controls.Add(this.cbContactPerson);
             this.Controls.Add(this.tbPhone);
@@ -219,8 +264,8 @@
             this.Name = "formAddJobFair";
             this.Text = "Add Job Fair";
             this.Load += new System.EventHandler(this.formAddJobFair_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactPersonDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +291,9 @@
         private ContactPersonDataSet contactPersonDataSet;
         private System.Windows.Forms.BindingSource peopleBindingSource;
         private ContactPersonDataSetTableAdapters.PeopleTableAdapter peopleTableAdapter;
+        private System.Windows.Forms.Label labelIntStart;
+        private System.Windows.Forms.Label labelIntEnd;
+        private System.Windows.Forms.ComboBox cbIntStart;
+        private System.Windows.Forms.ComboBox cbIntEnd;
     }
 }

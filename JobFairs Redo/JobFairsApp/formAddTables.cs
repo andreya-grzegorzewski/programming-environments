@@ -53,22 +53,24 @@ namespace JobFairsApp
             // TODO: This line of code loads data into the 'jobFairDataSet.JobFairs' table. You can move, or remove it, as needed.
             this.jobFairsTableAdapter.Fill(this.jobFairDataSet.JobFairs);
 
-            cbJobFair.SelectedIndex = 0;
-            
-            string command = "SELECT l.Name, l.ID " +
-                "FROM Locations AS l " + 
-                "WHERE l.JobFairID = " + cbJobFair.SelectedValue + ";";
-            List<string> locations = Table.Read(command, 2);
-
-            cbLocation.Items.Clear();
-
-            for (int i = 0; i < locations.Count; i += 2)
+            if (givenJobFairID == -1)
             {
-                Column thisColumn = new Column(locations[i]);
-                thisColumn.CurrentValue = locations[i + 1];
-                cbLocation.Items.Add(thisColumn);
+                cbJobFair.SelectedIndex = 0;
+
+                string command = "SELECT l.Name, l.ID " +
+                    "FROM Locations AS l " +
+                    "WHERE l.JobFairID = " + cbJobFair.SelectedValue + ";";
+                List<string> locations = Table.Read(command, 2);
+
+                cbLocation.Items.Clear();
+
+                for (int i = 0; i < locations.Count; i += 2)
+                {
+                    Column thisColumn = new Column(locations[i]);
+                    thisColumn.CurrentValue = locations[i + 1];
+                    cbLocation.Items.Add(thisColumn);
+                }
             }
-            
         }
 
         private void SetUpTable()

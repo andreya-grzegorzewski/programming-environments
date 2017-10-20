@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lbSpecialties = new System.Windows.Forms.ListBox();
+            this.specialtiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.specialtiesDataSet = new JobFairsApp.SpecialtiesDataSet();
             this.labelSpecialties = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
-            this.specialtiesDataSet = new JobFairsApp.SpecialtiesDataSet();
-            this.specialtiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.specialtiesTableAdapter = new JobFairsApp.SpecialtiesDataSetTableAdapters.SpecialtiesTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.specialtiesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.specialtiesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.specialtiesDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // lbSpecialties
@@ -51,6 +51,16 @@
             this.lbSpecialties.TabIndex = 0;
             this.lbSpecialties.ValueMember = "ID";
             // 
+            // specialtiesBindingSource
+            // 
+            this.specialtiesBindingSource.DataMember = "Specialties";
+            this.specialtiesBindingSource.DataSource = this.specialtiesDataSet;
+            // 
+            // specialtiesDataSet
+            // 
+            this.specialtiesDataSet.DataSetName = "SpecialtiesDataSet";
+            this.specialtiesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // labelSpecialties
             // 
             this.labelSpecialties.AutoSize = true;
@@ -62,7 +72,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(31, 355);
+            this.btnConfirm.Location = new System.Drawing.Point(31, 340);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 2;
@@ -72,23 +82,13 @@
             // 
             // btnDone
             // 
-            this.btnDone.Location = new System.Drawing.Point(172, 355);
+            this.btnDone.Location = new System.Drawing.Point(172, 340);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(75, 23);
             this.btnDone.TabIndex = 3;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
-            // specialtiesDataSet
-            // 
-            this.specialtiesDataSet.DataSetName = "SpecialtiesDataSet";
-            this.specialtiesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // specialtiesBindingSource
-            // 
-            this.specialtiesBindingSource.DataMember = "Specialties";
-            this.specialtiesBindingSource.DataSource = this.specialtiesDataSet;
             // 
             // specialtiesTableAdapter
             // 
@@ -98,16 +98,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 415);
+            this.ClientSize = new System.Drawing.Size(284, 390);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.labelSpecialties);
             this.Controls.Add(this.lbSpecialties);
             this.Name = "formAddPersonSpecialties";
-            this.Text = "formAddPersonSpecialties";
+            this.Text = "Add Specialties";
             this.Load += new System.EventHandler(this.formAddPersonSpecialties_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.specialtiesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.specialtiesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.specialtiesDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
