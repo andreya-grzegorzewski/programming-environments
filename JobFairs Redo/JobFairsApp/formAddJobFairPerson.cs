@@ -58,7 +58,8 @@ namespace JobFairsApp
             }
             else if (interviewer)
             {
-                // Show interviewer form
+                formAddInterviewer formI = new formAddInterviewer(givenPersonID);
+                formI.ShowDialog(this);
             }
         }
 

@@ -13,7 +13,7 @@ namespace JobFairsApp
     public partial class formAddCandidate : Form
     {
         Table candidates;
-        bool interviewer;
+        bool interviewer; // Marked true if this candidate is also an interviewer so I can show that form after this one
 
         public formAddCandidate(int personID, bool interviewer)
         {

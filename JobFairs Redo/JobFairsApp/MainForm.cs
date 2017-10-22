@@ -78,5 +78,13 @@ namespace JobFairsApp
             formAddTables form = new formAddTables();
             form.ShowDialog(this);
         }
+
+        private void buttonGenerateInterviews_Click(object sender, EventArgs e)
+        {
+            if (!Database.GenerateInterviews())
+            {
+                MessageBox.Show("Problems!");
+            }
+        }
     }
 }

@@ -32,11 +32,11 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.labelCompany = new System.Windows.Forms.Label();
             this.cbCompany = new System.Windows.Forms.ComboBox();
-            this.companyDataSet = new JobFairsApp.CompanyDataSet();
             this.companiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.companyDataSet = new JobFairsApp.CompanyDataSet();
             this.companiesTableAdapter = new JobFairsApp.CompanyDataSetTableAdapters.CompaniesTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.companyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companiesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -69,15 +69,15 @@
             this.cbCompany.TabIndex = 2;
             this.cbCompany.ValueMember = "ID";
             // 
-            // companyDataSet
-            // 
-            this.companyDataSet.DataSetName = "CompanyDataSet";
-            this.companyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // companiesBindingSource
             // 
             this.companiesBindingSource.DataMember = "Companies";
             this.companiesBindingSource.DataSource = this.companyDataSet;
+            // 
+            // companyDataSet
+            // 
+            this.companyDataSet.DataSetName = "CompanyDataSet";
+            this.companyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // companiesTableAdapter
             // 
@@ -92,10 +92,10 @@
             this.Controls.Add(this.labelCompany);
             this.Controls.Add(this.btnConfirm);
             this.Name = "formAddInterviewer";
-            this.Text = "formAddInterviewer";
+            this.Text = "Add Interviewer";
             this.Load += new System.EventHandler(this.formAddInterviewer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.companyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companiesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

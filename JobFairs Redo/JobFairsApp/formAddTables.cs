@@ -21,6 +21,19 @@ namespace JobFairsApp
             InitializeComponent();
             StartPosition = FormStartPosition.CenterParent;
             SetUpTable();
+
+            string command = "SELECT l.Name, l.ID " +
+                "FROM Locations AS l;";
+            List<string> locations = Table.Read(command, 2);
+
+            cbLocation.Items.Clear();
+
+            for (int i = 0; i < locations.Count; i += 2)
+            {
+                Column thisColumn = new Column(locations[i]);
+                thisColumn.CurrentValue = locations[i + 1];
+                cbLocation.Items.Add(thisColumn);
+            }
         }
 
         public formAddTables(int jobFairID)
@@ -32,20 +45,6 @@ namespace JobFairsApp
             tables.Columns[1].CurrentValue = jobFairID.ToString();
             labelJobFair.Visible = false;
             cbJobFair.Visible = false;
-
-            string command = "SELECT l.Name, l.ID " + 
-                "FROM Locations AS l "
-                + "WHERE JobFairID = " + jobFairID + ";";
-            List<string> locations = Table.Read(command, 2);
-
-            cbLocation.Items.Clear();
-
-            for (int i = 0; i < locations.Count; i += 2)
-            {
-                Column thisColumn = new Column(locations[i]);
-                thisColumn.CurrentValue = locations[i + 1];
-                cbLocation.Items.Add(thisColumn);
-            }
         }
 
         private void formAddTables_Load(object sender, EventArgs e)

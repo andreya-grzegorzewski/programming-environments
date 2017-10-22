@@ -32,6 +32,11 @@ namespace JobFairsApp
             set { columns = value; }
         }
 
+        public string ConnectionString
+        {
+            get { return connStr; }
+        }
+
         // Return the true if the insert was successful; false otherwise
         public bool InsertRow()
         {

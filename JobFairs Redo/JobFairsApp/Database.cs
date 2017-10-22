@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace JobFairsApp
 {
@@ -10,13 +12,12 @@ namespace JobFairsApp
     public class Database
     {
         private string name = "";
-        private string connStr = "";
+        private static string connStr = @"Data Source = localhost\SQLEXPRESS; Initial Catalog = JobFair; Integrated Security = True";
         private List<Table> tables = new List<Table>();
 
-        public Database(string name, string connStr, List<Table> tables)
+        public Database(string name, List<Table> tables)
         {
             this.name = name;
-            this.connStr = connStr;
             this.tables = tables;
         }
 
@@ -36,6 +37,30 @@ namespace JobFairsApp
         {
             get { return tables; }
             set { tables = value; }
+        }
+
+        public static bool GenerateInterviews()
+        {
+            string script = File.ReadAllText(@"C:\Users\Andreya\Documents\Assignments\2017-2018\Programming Environments\Interviews.sql");
+
+            // Connect to the database
+            SqlConnection sc = new SqlConnection(connStr);
+            sc.Open();
+
+            // Set command data
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = script;
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Connection = sc;
+
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                sc.Close();
+                return true;
+            }
+
+            sc.Close();
+            return false;
         }
     }
 }
