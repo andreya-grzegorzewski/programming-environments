@@ -50,7 +50,7 @@ namespace JobFairsApp
         {
             Column id = new Column("ID");
             Column personID = new Column("PersonID");
-            Column employmentType = new Column("EmploymentType");
+            Column employmentType = new Column("EmploymentTypeID");
             Column year = new Column("Year");
 
             List<Column> columns = new List<Column>
