@@ -104,11 +104,9 @@ namespace JobFairsApp
             SqlConnection sc = new SqlConnection(connStr);
             sc.Open();
 
-            // Select job fair title/venue name pairs
+            // Set command data
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = command;
-
-            // Set command data
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Connection = sc;
 
@@ -134,6 +132,10 @@ namespace JobFairsApp
                         else if (type == "int")
                         {
                             results.Add(reader.GetInt32(i).ToString());
+                        }
+                        else if (type == "time")
+                        {
+                            results.Add(reader.GetTimeSpan(i).ToString());
                         }
                     }
                 }

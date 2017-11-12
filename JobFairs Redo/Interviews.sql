@@ -1,5 +1,8 @@
 /* Get all the candidates and their specialties */
 
+DELETE FROM [JobFair].[dbo].[InterviewInterviewers];
+DELETE FROM [JobFair].[dbo].[Interviews];
+
 DROP TABLE IF EXISTS #TheseCandidates
 
 CREATE TABLE #TheseCandidates

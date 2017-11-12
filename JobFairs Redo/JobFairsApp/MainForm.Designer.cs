@@ -39,6 +39,7 @@
             this.buttonAssociatePersonWithJobFair = new System.Windows.Forms.Button();
             this.buttonAddTable = new System.Windows.Forms.Button();
             this.buttonGenerateInterviews = new System.Windows.Forms.Button();
+            this.buttonPrintInterviews = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWelcome
@@ -143,7 +144,7 @@
             // 
             // buttonGenerateInterviews
             // 
-            this.buttonGenerateInterviews.Location = new System.Drawing.Point(359, 315);
+            this.buttonGenerateInterviews.Location = new System.Drawing.Point(359, 286);
             this.buttonGenerateInterviews.Name = "buttonGenerateInterviews";
             this.buttonGenerateInterviews.Size = new System.Drawing.Size(166, 23);
             this.buttonGenerateInterviews.TabIndex = 10;
@@ -151,11 +152,22 @@
             this.buttonGenerateInterviews.UseVisualStyleBackColor = true;
             this.buttonGenerateInterviews.Click += new System.EventHandler(this.buttonGenerateInterviews_Click);
             // 
+            // buttonPrintInterviews
+            // 
+            this.buttonPrintInterviews.Location = new System.Drawing.Point(359, 315);
+            this.buttonPrintInterviews.Name = "buttonPrintInterviews";
+            this.buttonPrintInterviews.Size = new System.Drawing.Size(166, 23);
+            this.buttonPrintInterviews.TabIndex = 11;
+            this.buttonPrintInterviews.Text = "Print Interviews";
+            this.buttonPrintInterviews.UseVisualStyleBackColor = true;
+            this.buttonPrintInterviews.Click += new System.EventHandler(this.buttonPrintInterviews_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 365);
+            this.Controls.Add(this.buttonPrintInterviews);
             this.Controls.Add(this.buttonGenerateInterviews);
             this.Controls.Add(this.buttonAddTable);
             this.Controls.Add(this.buttonAssociatePersonWithJobFair);
@@ -187,6 +199,7 @@
         private System.Windows.Forms.Button buttonAssociatePersonWithJobFair;
         private System.Windows.Forms.Button buttonAddTable;
         private System.Windows.Forms.Button buttonGenerateInterviews;
+        private System.Windows.Forms.Button buttonPrintInterviews;
     }
 }
 
