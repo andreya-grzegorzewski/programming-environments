@@ -84,16 +84,17 @@ namespace JobFairsApp
                     }
                     start += interviewInfo[i].Length;
                 }
-                
+
                 //Save the document
-                string filename = @"C:\Users\Andreya\Documents\InterviewsWord.docx";
+                string filename = @"C:\Users\Andreya\Documents\InterviewsWord.docx"; // For my laptop
+                //string filename = @"C:\Users\a-grzegorzewski\Documents\InterviewsWord.docx"; // For the Lounge
                 document.SaveAs2(filename);
+                document.PrintOut();
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
                 winword = null;
 
-                document.PrintOut();
                 File.Delete(filename);
 
             }

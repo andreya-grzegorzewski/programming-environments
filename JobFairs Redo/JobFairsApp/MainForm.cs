@@ -82,75 +82,29 @@ namespace JobFairsApp
             PrintDialog print = new PrintDialog();
             if (print.ShowDialog() == DialogResult.OK)
             {
-                List<string> interviewInfo = Database.GetReadableInterviews();
+                List<string> interviewInfo = Database.GetReadableInterviews(); // Used on my laptop
 
+                // Used when I'm in the Lounge and I don't have access to my database
                 /*
-                try
+                List<string> interviewInfo = new List<string>
                 {
-                    StreamReader streamToPrint = new StreamReader(textFile);
-                    try
-                    {
-                        Font printFont = new Font("Arial", 12);
-                        PrintDocument pd = new PrintDocument();
-                        pd.PrintPage += new PrintPageEventHandler
-                           (this.pd_PrintPage);
-                        pd.Print();
-                    }
-                    finally
-                    {
-                        streamToPrint.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    "Interviews for Andreya Candidate",
+                    "You will be interviewing with Jerry Interviewer at Google for a Full-time position in Computer Science. Your interview will take place at Table 2 in Kinghorn, from 9:00 to 9:20.",
+                    "Interview 2",
+                    "Interviews for Some Candidate",
+                    "A first interview",
+                    "A second interview",
+                    "A third interview",
+                    "A fourth interview",
+                    "Interviews for A Final Candidate",
+                    "This is some data",
+                    "And here is some more",
+                    "And this is the end."
+                };
                 */
+
                 Printer.PrintInterviews(interviewInfo);
-
-                //string filename = @"C:\Users\Andreya\Documents\InterviewsWord.docx";
-                //DocumentModel.Load(filename, LoadOptions.DocxDefault).Print();
-
-
             }
         }
-
-        // The PrintPage event is raised for each page to be printed.
-        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            float linesPerPage = 0;
-            float yPos = 0;
-            int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
-            string line = null;
-            Font printFont = new Font("Arial", 12);
-
-            StreamReader streamToPrint = new StreamReader(@"C:\Users\Andreya\Documents\Interviews.txt");
-
-            // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height /
-               printFont.GetHeight(ev.Graphics);
-
-            line = streamToPrint.ReadLine();
-
-            // Print each line of the file.
-            while (count < linesPerPage && line != null)
-            {
-                yPos = topMargin + (count *
-                   printFont.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, printFont, Brushes.Black,
-                   leftMargin, yPos, new StringFormat());
-                count++;
-            }
-
-            // If more lines exist, print another page.
-            if (line != null)
-                ev.HasMorePages = true;
-            else
-                ev.HasMorePages = false;
-
-        }
-
     }
 }
