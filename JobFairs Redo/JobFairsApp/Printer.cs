@@ -5,103 +5,186 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Printing;
 
 namespace JobFairsApp
 {
-    // This code borrowed from http://www.c-sharpcorner.com/UploadFile/muralidharan.d/how-to-create-word-document-using-C-Sharp/
-    // It provides test code for creating a dummy document.
-    // I am learning from it and adapting it to create a real document for interview data.
     class Printer
     {
-        //Create document method
-        public static void PrintInterviews(List<string> interviewInfo)
+        private List<string> interviewInfoCandidate = Database.GetInterviews('c');
+        private List<string> interviewInfoInterviewer = Database.GetInterviews('i');
+        private List<string> interviewInfoMaster = Database.GetInterviews('m');
+
+        // Pages and indices for candidates, interviewers, and master
+        private int cPages = 1;
+        private int iPages = 1;
+        private int mPages = 1;
+        private int cIndex = 0;
+        private int iIndex = 0;
+        private int mIndex = 0;
+
+        public void CandidateDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            try
+            Graphics g = e.Graphics;
+
+            float rightMargin = e.MarginBounds.Right;
+            float topMargin = e.MarginBounds.Top;
+            float bottomMargin = e.MarginBounds.Bottom;
+            float leftMargin = e.MarginBounds.Left;
+            float yPos = topMargin; // Used keeping track of how much of the page we've used
+
+            Font headerFont = new Font("Calibri", 16f);
+            Font bodyFont = new Font("Calibri", 12f);
+            Font littleFont = new Font("Calibri", 10f);
+
+            // Write the page number in a header
+            SizeF stringSize = g.MeasureString(cPages.ToString(), littleFont);
+            g.DrawString(cPages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height);
+            cPages++;
+
+            // Write the date in a footer
+            stringSize = g.MeasureString(DateTime.Now.ToString(), littleFont);
+            g.DrawString(DateTime.Now.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, bottomMargin + stringSize.Height);
+
+            // Write the header - Interviews for ...
+            if (interviewInfoCandidate[cIndex].IndexOf("Interviews for") == 0)
             {
-                //Create an instance for word app
-                Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
-
-                // Make Word invisible
-                winword.Visible = false;
-
-                //Create a missing variable for missing value
-                object missing = System.Reflection.Missing.Value;
-
-                //Create a new document
-                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
-
-                //Add header into the document
-                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
-                {
-                    //Get the header range and add the header details.
-                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
-                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphRight;
-                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
-                    headerRange.Font.Size = 10;
-                    headerRange.Text = "Interviews generated and printed " + DateTime.Now.ToString();
-                }
-
-                //Add the footers into the document
-                foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
-                {
-                    //Get the footer range and add the footer details.
-                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
-                    footerRange.Font.Size = 10;
-                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphRight;
-                    footerRange.Fields.Add(footerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
-                }
-
-                document.Content.SetRange(0, 0);
-                
-                Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
-                object styleHeading1 = "Heading 1";
-                para1.Range.set_Style(ref styleHeading1);
-                para1.Range.Text = interviewInfo[0];
-                para1.Range.InsertParagraphAfter();
-                
-                int start = interviewInfo[0].Length;
-                for (int i = 1; i < interviewInfo.Count; i++)
-                {
-                    document.Content.SetRange(start, start);
-                    if (interviewInfo[i].Substring(0, 10) == "Interviews")
-                    {
-                        document.Words.Last.InsertBreak(Microsoft.Office.Interop.Word.WdBreakType.wdPageBreak);
-                        Microsoft.Office.Interop.Word.Paragraph heading = document.Content.Paragraphs.Add(ref missing);
-                        object headingStyle = "Heading 1";
-                        heading.Range.set_Style(ref headingStyle);
-                        heading.Range.Text = interviewInfo[i];
-                        heading.Range.InsertParagraphAfter();
-                    }
-                    else
-                    {
-                        Microsoft.Office.Interop.Word.Paragraph body = document.Content.Paragraphs.Add(ref missing);
-                        object bodyStyle = "Normal";
-                        body.Range.set_Style(ref bodyStyle);
-                        body.Range.Text = interviewInfo[i];
-                        body.Range.InsertParagraphAfter();                         
-                    }
-                    start += interviewInfo[i].Length;
-                }
-
-                //Save the document
-                string filename = @"C:\Users\Andreya\Documents\InterviewsWord.docx"; // For my laptop
-                //string filename = @"C:\Users\a-grzegorzewski\Documents\InterviewsWord.docx"; // For the Lounge
-                document.SaveAs2(filename);
-                document.PrintOut();
-                document.Close(ref missing, ref missing, ref missing);
-                document = null;
-                winword.Quit(ref missing, ref missing, ref missing);
-                winword = null;
-
-                File.Delete(filename);
-
+                stringSize = g.MeasureString(interviewInfoCandidate[cIndex], headerFont);
+                g.DrawString(interviewInfoCandidate[cIndex], headerFont, Brushes.DarkCyan, leftMargin, yPos);
+                yPos = topMargin + stringSize.Height + 20;
             }
-            catch (Exception ex)
+
+            // Write the content
+            for (int i = cIndex + 1; i < interviewInfoCandidate.Count; i++)
             {
-                MessageBox.Show(ex.Message);
+                // Detect page break
+                if (interviewInfoCandidate[i].IndexOf("Interviews for") == 0 || yPos > bottomMargin)
+                {
+                    e.HasMorePages = true;
+                    cIndex = i;
+                    return;
+                }
+
+                // If it's not time for a page break, write this interview info
+                stringSize = g.MeasureString(interviewInfoCandidate[i], bodyFont);
+                g.DrawString(interviewInfoCandidate[i], bodyFont, Brushes.Black, leftMargin, yPos);
+                yPos += stringSize.Height + 10;
             }
+
+            // If we get to here, reset everything and tell the printer to stop printing
+            e.HasMorePages = false;
+            cIndex = 0;
+            cPages = 1;
+        }
+
+        public void InterviewerDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            float rightMargin = e.MarginBounds.Right;
+            float topMargin = e.MarginBounds.Top;
+            float bottomMargin = e.MarginBounds.Bottom;
+            float leftMargin = e.MarginBounds.Left;
+            float yPos = topMargin; // Used keeping track of how much of the page we've used
+
+            Font headerFont = new Font("Calibri", 16f);
+            Font bodyFont = new Font("Calibri", 12f);
+            Font littleFont = new Font("Calibri", 10f);
+
+            // Write the page number in a header
+            SizeF stringSize = g.MeasureString(iPages.ToString(), littleFont);
+            g.DrawString(iPages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height);
+            iPages++;
+
+            // Write the date in a footer
+            stringSize = g.MeasureString(DateTime.Now.ToString(), littleFont);
+            g.DrawString(DateTime.Now.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, bottomMargin + stringSize.Height);
+
+            // Write the header - Interviews for ...
+            if (interviewInfoInterviewer[iIndex].IndexOf("Interviews for") == 0)
+            {
+                stringSize = g.MeasureString(interviewInfoInterviewer[iIndex], headerFont);
+                g.DrawString(interviewInfoInterviewer[iIndex], headerFont, Brushes.DarkCyan, leftMargin, yPos);
+                yPos = topMargin + stringSize.Height + 20;
+            }
+
+            // Write the content
+            for (int i = iIndex + 1; i < interviewInfoInterviewer.Count; i++)
+            {
+                // Detect page break
+                if (interviewInfoInterviewer[i].IndexOf("Interviews for") == 0 || yPos > bottomMargin)
+                {
+                    e.HasMorePages = true;
+                    iIndex = i;
+                    return;
+                }
+
+                // If it's not time for a page break, write this interview info
+                stringSize = g.MeasureString(interviewInfoInterviewer[i], bodyFont);
+                g.DrawString(interviewInfoInterviewer[i], bodyFont, Brushes.Black, leftMargin, yPos);
+                yPos += stringSize.Height + 10;
+            }
+
+            // If we get to here, reset everything and tell the printer to stop printing
+            e.HasMorePages = false;
+            iIndex = 0;
+            iPages = 1;
+        }
+
+        public void MasterDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            float rightMargin = e.MarginBounds.Right;
+            float topMargin = e.MarginBounds.Top;
+            float bottomMargin = e.MarginBounds.Bottom;
+            float leftMargin = e.MarginBounds.Left;
+            float yPos = topMargin; // Used keeping track of how much of the page we've used
+
+            Font headerFont = new Font("Calibri", 16f);
+            Font bodyFont = new Font("Calibri", 12f);
+            Font littleFont = new Font("Calibri", 10f);
+
+            // Write the page number in a header
+            SizeF stringSize = g.MeasureString(mPages.ToString(), littleFont);
+            g.DrawString(mPages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height);
+            mPages++;
+
+            // Write the date in a footer
+            stringSize = g.MeasureString(DateTime.Now.ToString(), littleFont);
+            g.DrawString(DateTime.Now.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, bottomMargin + stringSize.Height);
+
+            // Write the header - Interviews
+            if (mPages == 2) // Use 2 because we already incremented mPages above
+            {
+                stringSize = g.MeasureString("Interviews", headerFont);
+                g.DrawString("Interviews", headerFont, Brushes.DarkCyan, leftMargin, yPos);
+                yPos = topMargin + stringSize.Height + 20;
+            }
+
+            // Write the content
+            for (int i = mIndex + 1; i < interviewInfoMaster.Count; i++)
+            {
+                // Detect page break
+                if (yPos > bottomMargin)
+                {
+                    e.HasMorePages = true;
+                    mIndex = i;
+                    return;
+                }
+
+                // If it's not time for a page break, write this interview info
+                stringSize = g.MeasureString(interviewInfoMaster[i], bodyFont);
+                g.DrawString(interviewInfoMaster[i], bodyFont, Brushes.Black, leftMargin, yPos);
+                yPos += stringSize.Height + 10;
+            }
+
+            // If we get to here, reset everything and tell the printer to stop printing
+            e.HasMorePages = false;
+            mIndex = 0;
+            mPages = 1;
+
         }
     }
 }

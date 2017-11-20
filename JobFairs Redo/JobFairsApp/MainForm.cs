@@ -82,28 +82,41 @@ namespace JobFairsApp
             PrintDialog print = new PrintDialog();
             if (print.ShowDialog() == DialogResult.OK)
             {
-                List<string> interviewInfo = Database.GetReadableInterviews(); // Used on my laptop
+                PrintPreviewDialog ppd = new PrintPreviewDialog();
+                Printer myPrinter = new Printer();
 
-                // Used when I'm in the Lounge and I don't have access to my database
-                /*
-                List<string> interviewInfo = new List<string>
-                {
-                    "Interviews for Andreya Candidate",
-                    "You will be interviewing with Jerry Interviewer at Google for a Full-time position in Computer Science. Your interview will take place at Table 2 in Kinghorn, from 9:00 to 9:20.",
-                    "Interview 2",
-                    "Interviews for Some Candidate",
-                    "A first interview",
-                    "A second interview",
-                    "A third interview",
-                    "A fourth interview",
-                    "Interviews for A Final Candidate",
-                    "This is some data",
-                    "And here is some more",
-                    "And this is the end."
-                };
-                */
+                // Set up the candidate document
+                PrintDocument candidateDoc = new PrintDocument();
+                candidateDoc.DocumentName = "Interviews for Candidates";
+                candidateDoc.DefaultPageSettings.Landscape = true;
+                candidateDoc.PrintPage += myPrinter.CandidateDoc_PrintPage;
 
-                Printer.PrintInterviews(interviewInfo);
+                // Set up the interviewer document
+                PrintDocument interviewerDoc = new PrintDocument();
+                interviewerDoc.DocumentName = "Interviews for Interviewers";
+                interviewerDoc.DefaultPageSettings.Landscape = true;
+                interviewerDoc.PrintPage += myPrinter.InterviewerDoc_PrintPage;
+
+                // Set up the master document
+                PrintDocument masterDoc = new PrintDocument();
+                masterDoc.DocumentName = "Interviews - Master";
+                masterDoc.DefaultPageSettings.Landscape = true;
+                masterDoc.PrintPage += myPrinter.MasterDoc_PrintPage;
+
+                // Show the print previews for each document
+                ppd.Document = candidateDoc;
+                ppd.ShowDialog();
+
+                ppd.Document = interviewerDoc;
+                ppd.ShowDialog();
+
+                ppd.Document = masterDoc;
+                ppd.ShowDialog();
+                
+                // Print the documents
+                // candidateDoc.Print();
+                // interviewerDoc.Print();
+                // masterDoc.Print();
             }
         }
     }
