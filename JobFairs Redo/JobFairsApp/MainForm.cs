@@ -113,7 +113,7 @@ namespace JobFairsApp
                 ppd.Document = masterDoc;
                 ppd.ShowDialog();
                 
-                // Print the documents
+                // Print the documents - uncomment this when I'm working with an actual printer
                 // candidateDoc.Print();
                 // interviewerDoc.Print();
                 // masterDoc.Print();

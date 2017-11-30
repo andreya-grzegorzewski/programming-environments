@@ -16,123 +16,34 @@ namespace JobFairsApp
         private List<string> interviewInfoInterviewer = Database.GetInterviews('i');
         private List<string> interviewInfoMaster = Database.GetInterviews('m');
 
+        // Fonts used throughout the printing process
+        Font headerFont = new Font("Calibri", 16f);
+        Font bodyFont = new Font("Calibri", 12f);
+        Font littleFont = new Font("Calibri", 10f);
+
         // Pages and indices for candidates, interviewers, and master
-        private int cPages = 1;
-        private int iPages = 1;
-        private int mPages = 1;
-        private int cIndex = 0;
-        private int iIndex = 0;
-        private int mIndex = 0;
+        private int pages = 1;
+        private int index = 0;
+
+        SizeF stringSize; // Used for measuring strings throughout
 
         public void CandidateDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Graphics g = e.Graphics;
-
-            float rightMargin = e.MarginBounds.Right;
-            float topMargin = e.MarginBounds.Top;
-            float bottomMargin = e.MarginBounds.Bottom;
-            float leftMargin = e.MarginBounds.Left;
-            float yPos = topMargin; // Used keeping track of how much of the page we've used
-
-            Font headerFont = new Font("Calibri", 16f);
-            Font bodyFont = new Font("Calibri", 12f);
-            Font littleFont = new Font("Calibri", 10f);
-
-            // Write the page number in a header
-            SizeF stringSize = g.MeasureString(cPages.ToString(), littleFont);
-            g.DrawString(cPages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height);
-            cPages++;
-
-            // Write the date in a footer
-            stringSize = g.MeasureString(DateTime.Now.ToString(), littleFont);
-            g.DrawString(DateTime.Now.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, bottomMargin + stringSize.Height);
-
-            // Write the header - Interviews for ...
-            if (interviewInfoCandidate[cIndex].IndexOf("Interviews for") == 0)
-            {
-                stringSize = g.MeasureString(interviewInfoCandidate[cIndex], headerFont);
-                g.DrawString(interviewInfoCandidate[cIndex], headerFont, Brushes.DarkCyan, leftMargin, yPos);
-                yPos = topMargin + stringSize.Height + 20;
-            }
-
-            // Write the content
-            for (int i = cIndex + 1; i < interviewInfoCandidate.Count; i++)
-            {
-                // Detect page break
-                if (interviewInfoCandidate[i].IndexOf("Interviews for") == 0 || yPos > bottomMargin)
-                {
-                    e.HasMorePages = true;
-                    cIndex = i;
-                    return;
-                }
-
-                // If it's not time for a page break, write this interview info
-                stringSize = g.MeasureString(interviewInfoCandidate[i], bodyFont);
-                g.DrawString(interviewInfoCandidate[i], bodyFont, Brushes.Black, leftMargin, yPos);
-                yPos += stringSize.Height + 10;
-            }
-
-            // If we get to here, reset everything and tell the printer to stop printing
-            e.HasMorePages = false;
-            cIndex = 0;
-            cPages = 1;
+            PrintInterviews(e, interviewInfoCandidate);
         }
 
         public void InterviewerDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Graphics g = e.Graphics;
-
-            float rightMargin = e.MarginBounds.Right;
-            float topMargin = e.MarginBounds.Top;
-            float bottomMargin = e.MarginBounds.Bottom;
-            float leftMargin = e.MarginBounds.Left;
-            float yPos = topMargin; // Used keeping track of how much of the page we've used
-
-            Font headerFont = new Font("Calibri", 16f);
-            Font bodyFont = new Font("Calibri", 12f);
-            Font littleFont = new Font("Calibri", 10f);
-
-            // Write the page number in a header
-            SizeF stringSize = g.MeasureString(iPages.ToString(), littleFont);
-            g.DrawString(iPages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height);
-            iPages++;
-
-            // Write the date in a footer
-            stringSize = g.MeasureString(DateTime.Now.ToString(), littleFont);
-            g.DrawString(DateTime.Now.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, bottomMargin + stringSize.Height);
-
-            // Write the header - Interviews for ...
-            if (interviewInfoInterviewer[iIndex].IndexOf("Interviews for") == 0)
-            {
-                stringSize = g.MeasureString(interviewInfoInterviewer[iIndex], headerFont);
-                g.DrawString(interviewInfoInterviewer[iIndex], headerFont, Brushes.DarkCyan, leftMargin, yPos);
-                yPos = topMargin + stringSize.Height + 20;
-            }
-
-            // Write the content
-            for (int i = iIndex + 1; i < interviewInfoInterviewer.Count; i++)
-            {
-                // Detect page break
-                if (interviewInfoInterviewer[i].IndexOf("Interviews for") == 0 || yPos > bottomMargin)
-                {
-                    e.HasMorePages = true;
-                    iIndex = i;
-                    return;
-                }
-
-                // If it's not time for a page break, write this interview info
-                stringSize = g.MeasureString(interviewInfoInterviewer[i], bodyFont);
-                g.DrawString(interviewInfoInterviewer[i], bodyFont, Brushes.Black, leftMargin, yPos);
-                yPos += stringSize.Height + 10;
-            }
-
-            // If we get to here, reset everything and tell the printer to stop printing
-            e.HasMorePages = false;
-            iIndex = 0;
-            iPages = 1;
+            PrintInterviews(e, interviewInfoInterviewer);
         }
 
         public void MasterDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            PrintInterviews(e, interviewInfoMaster);
+        }
+
+        // Use this to print interviews for each method - to condense the code
+        private PrintPageEventArgs PrintInterviews(PrintPageEventArgs e, List<string> interviewInfo)
         {
             Graphics g = e.Graphics;
 
@@ -142,21 +53,24 @@ namespace JobFairsApp
             float leftMargin = e.MarginBounds.Left;
             float yPos = topMargin; // Used keeping track of how much of the page we've used
 
-            Font headerFont = new Font("Calibri", 16f);
-            Font bodyFont = new Font("Calibri", 12f);
-            Font littleFont = new Font("Calibri", 10f);
-
             // Write the page number in a header
-            SizeF stringSize = g.MeasureString(mPages.ToString(), littleFont);
-            g.DrawString(mPages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height);
-            mPages++;
+            stringSize = g.MeasureString(pages.ToString(), littleFont);
+            g.DrawString(pages.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, topMargin - stringSize.Height - 30);
+            pages++;
 
             // Write the date in a footer
             stringSize = g.MeasureString(DateTime.Now.ToString(), littleFont);
             g.DrawString(DateTime.Now.ToString(), littleFont, Brushes.Black, rightMargin - stringSize.Width, bottomMargin + stringSize.Height);
 
-            // Write the header - Interviews
-            if (mPages == 2) // Use 2 because we already incremented mPages above
+            // Write the header if we're printing the interviewer or candidate pages - Interviews for ...
+            if (interviewInfo[index].IndexOf("Interviews for") == 0)
+            {
+                stringSize = g.MeasureString(interviewInfo[index], headerFont);
+                g.DrawString(interviewInfo[index], headerFont, Brushes.DarkCyan, leftMargin, yPos);
+                yPos = topMargin + stringSize.Height + 20;
+            }
+            // Otherwise write the generic header, "Interviews," for the master doc
+            else if (pages == 2) // Use 2 because we already incremented mPages above
             {
                 stringSize = g.MeasureString("Interviews", headerFont);
                 g.DrawString("Interviews", headerFont, Brushes.DarkCyan, leftMargin, yPos);
@@ -164,27 +78,28 @@ namespace JobFairsApp
             }
 
             // Write the content
-            for (int i = mIndex + 1; i < interviewInfoMaster.Count; i++)
+            for (int i = index + 1; i < interviewInfo.Count; i++)
             {
                 // Detect page break
-                if (yPos > bottomMargin)
+                if (interviewInfo[i].IndexOf("Interviews for") == 0 || yPos > bottomMargin)
                 {
                     e.HasMorePages = true;
-                    mIndex = i;
-                    return;
+                    index = i;
+                    return e;
                 }
 
                 // If it's not time for a page break, write this interview info
-                stringSize = g.MeasureString(interviewInfoMaster[i], bodyFont);
-                g.DrawString(interviewInfoMaster[i], bodyFont, Brushes.Black, leftMargin, yPos);
+                stringSize = g.MeasureString(interviewInfo[i], bodyFont);
+                g.DrawString(interviewInfo[i], bodyFont, Brushes.Black, leftMargin, yPos);
                 yPos += stringSize.Height + 10;
             }
 
             // If we get to here, reset everything and tell the printer to stop printing
             e.HasMorePages = false;
-            mIndex = 0;
-            mPages = 1;
+            index = 0;
+            pages = 1;
 
+            return e;
         }
     }
 }

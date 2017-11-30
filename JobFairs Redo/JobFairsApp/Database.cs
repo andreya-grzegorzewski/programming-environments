@@ -67,14 +67,14 @@ namespace JobFairsApp
         // 'i' is for interviewers, and 'm' is for master. Used to order the data.
         public static List<string> GetInterviews(char interviewsForFlag)
         {
-            string script = "";
+            string script = File.ReadAllText(@"C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\Sql Files\GetInterviewsReadableGeneral.sql");
 
             if (interviewsForFlag == 'c')
-                script = File.ReadAllText(@"C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\GetInterviewsReadable.sql");
+                script += "SELECT * FROM #InterviewsReadable ORDER BY CandidateFirst, CandidateLast, InterviewDate, StartTime;";
             else if (interviewsForFlag == 'i')
-                script = File.ReadAllText(@"C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\GetInterviewsReadableForInterviewer.sql");
+                script += "SELECT * FROM #InterviewsReadable ORDER BY InterviewerFirst, InterviewerLast, InterviewDate, StartTime;";
             else if (interviewsForFlag == 'm')
-                script = File.ReadAllText(@"C:\Users\Andreya\Documents\GitHub\programming-environments\JobFairs Redo\GetInterviewsReadableMaster.sql");
+                script += "SELECT * FROM #InterviewsReadable ORDER BY InterviewDate, StartTime, TableID;";
 
             int numColumns = 13;
 
